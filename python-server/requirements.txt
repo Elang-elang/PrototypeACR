@@ -1,0 +1,23 @@
+# Core Packages
+Flask==3.0.2
+Flask-SocketIO==5.3.6
+Flask-CORS==4.0.0
+python-socketio==5.11.2
+python-engineio==4.9.0
+
+# Database
+apsw==3.44.2.0
+SQLAlchemy==2.0.25
+
+# File Processing
+Pillow==10.2.0
+python-magic==0.4.27
+werkzeug==3.0.1
+
+# Security
+bcrypt==4.1.2
+pyjwt==2.8.0
+
+# Utilities
+python-dotenv==1.0.1
+uuid==1.30
