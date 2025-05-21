@@ -1,1 +1,138 @@
-
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Neon Chat</title>  
+  <link rel="stylesheet" href="style.css">  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">  
+  <link rel="preconnect" href="https://fonts.googleapis.com">  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">  
+</head>  
+<body>  
+  <div class="container">  
+    <!-- Sidebar -->  
+    <div class="sidebar">  
+      <div class="logo">  
+        <div class="logo-icon">  
+          <i class="fa-solid fa-bolt"></i>  
+        </div>  
+        <h1>Neon Chat</h1>  
+      </div>  
+        
+      <div class="user-profile">  
+        <div class="avatar">  
+          <span id="avatar-letter">G</span>  
+        </div>  
+        <div class="user-details">  
+          <span id="username">Guest</span>  
+          <span class="status-indicator">  
+            <span class="status-dot"></span>  
+            <span class="status-text">Online</span>  
+          </span>  
+        </div>  
+        <button id="logout-btn" title="Logout">  
+          <i class="fa-solid fa-sign-out-alt"></i>  
+        </button>  
+      </div>  
+        
+      <div class="divider"></div>  
+        
+      <div class="online-users">  
+        <h2><i class="fa-solid fa-users"></i> Online Users (<span id="online-count">0</span>)</h2>  
+        <ul id="users-list" class="users-list"></ul>  
+      </div>  
+        
+      <div class="theme-switcher">  
+        <button id="theme-toggle">  
+          <i class="fa-solid fa-moon"></i>  
+          <span>Switch Theme</span>  
+        </button>  
+      </div>  
+    </div>  
+  
+    <!-- Chat Area -->  
+    <div class="chat-area">  
+      <div class="chat-header">  
+        <h2><i class="fa-solid fa-comments"></i> Chat Room</h2>  
+        <div class="actions">  
+          <button id="clear-chat" title="Clear Chat">  
+            <i class="fa-solid fa-broom"></i>  
+          </button>  
+          <button id="mobile-menu" title="Menu">  
+            <i class="fa-solid fa-bars"></i>  
+          </button>  
+        </div>  
+      </div>  
+        
+      <div class="messages-container">  
+        <div id="messages" class="messages"></div>  
+        <div class="typing-indicator hidden">  
+          <span class="dot"></span>  
+          <span class="dot"></span>  
+          <span class="dot"></span>  
+        </div>  
+      </div>  
+        
+      <div class="message-composer">  
+        <div class="input-container">  
+          <input type="text" id="message-input" placeholder="Type a message..." autocomplete="off">  
+          <div class="input-actions">  
+            <label for="file-upload" class="file-upload-label" title="Attach File">  
+              <i class="fa-solid fa-paperclip"></i>  
+            </label>  
+            <input type="file" id="file-upload" hidden>  
+            <button id="emoji-btn" title="Emoji">  
+              <i class="fa-regular fa-face-smile"></i>  
+            </button>  
+          </div>  
+        </div>  
+        <button id="send-btn" title="Send Message">  
+          <i class="fa-solid fa-paper-plane"></i>  
+        </button>  
+      </div>  
+    </div>  
+  </div>  
+  
+  <!-- Login Modal -->  
+  <div class="modal" id="login-modal">  
+    <div class="modal-content">  
+      <div class="modal-header">  
+        <div class="logo-icon large">  
+          <i class="fa-solid fa-bolt"></i>  
+        </div>  
+        <h2>Welcome to Neon Chat</h2>  
+        <p>Connect with others in real-time</p>  
+      </div>  
+      <div class="modal-body">  
+        <div class="input-field">  
+          <label for="login-input">Your Name</label>  
+          <input type="text" id="login-input" placeholder="Enter your name" maxlength="20">  
+        </div>  
+        <button id="login-btn">Join Chat <i class="fa-solid fa-right-to-bracket"></i></button>  
+      </div>  
+    </div>  
+  </div>  
+  
+  <!-- Emoji Picker -->  
+  <div id="emoji-picker" class="emoji-picker hidden">  
+    <div class="emoji-categories">  
+      <button class="active" data-category="smileys">😊</button>  
+      <button data-category="animals">🐱</button>  
+      <button data-category="food">🍔</button>  
+      <button data-category="activity">⚽</button>  
+      <button data-category="travel">🚗</button>  
+      <button data-category="objects">💡</button>  
+    </div>  
+    <div class="emoji-container">  
+      <div class="emoji-list" id="emoji-list">  
+        <!-- Emojis will be added here by JavaScript -->  
+      </div>  
+    </div>  
+  </div>  
+  
+  <script src="/socket.io/socket.io.js"></script>  
+  <script src="chat.js"></script>  
+</body>  
+</html>
